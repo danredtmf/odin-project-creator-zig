@@ -4,6 +4,14 @@ const print = std.debug.print;
 const constants = @import("./constants.zig");
 
 pub fn folder(path: []const u8) !void {
+    const folderName = result: {
+        if (std.mem.lastIndexOf(u8, path, "/")) |last_index| {
+            break :result path[last_index + 1 ..];
+        } else {
+            break :result path;
+        }
+    };
+
     const exists = blk: {
         std.fs.cwd().access(path, .{}) catch |err| {
             if (err == error.FileNotFound) break :blk false;
@@ -14,7 +22,7 @@ pub fn folder(path: []const u8) !void {
 
     if (!exists) {
         try std.fs.cwd().makeDir(path);
-        print("Folder `{s}` has been created!\n", .{path});
+        print("Folder `{s}` has been created!\n", .{folderName});
     }
 }
 
