@@ -8,8 +8,8 @@
             "name": "Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/${workspaceFolderBasename}",
-            "args": [],
+            "program": "./zig-out/bin/odin-project-creator-zig",
+            "args": ["new", "--ols", "--vscode"],
             "cwd": "${workspaceFolder}",
         }
     ]
