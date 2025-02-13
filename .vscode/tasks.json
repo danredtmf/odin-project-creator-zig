@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Release",
+            "type": "shell",
+            "command": "$(echo \"$(asdf where zig master)/zig\") build -Doptimize=ReleaseSmall",
+            // "command": "$(echo \"$(asdf where zig 0.13.0)/zig\") build -Doptimize=ReleaseSafe",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "Build Debug",
+            "type": "shell",
+            "command": "$(echo \"$(asdf where zig master)/zig\") build",
+            // "command": "$(echo \"$(asdf where zig 0.13.0)/zig\") build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+    ]
+}
